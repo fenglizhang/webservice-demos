@@ -1,0 +1,31 @@
+wsimport的用法
+wsimport [options] <WSDL_URI>
+比较常用的[options]有：
+1. -d <directory>
+   在指定的目录生成class文件
+2. -clientjar <jarfile>
+   在当前目录生成jar文件，结合-d <directory>可以在指定的目录生成jar文件
+3. -s <directory>
+   在指定的目录生成java源文件
+4. -p <pkg>
+   指定生成文件的包结构
+5. -keep
+   在生成class文件，或者jar包时，同时保留java源文件
+   
+例如：
+1.在指定的目录F：/temp【这个文件要存在才行，没有会报错】生成指定包结构的[java源文件]
+假设wsdl文档的uri为http://localhost:6666/service/interpret?wsdl，那么在F:\temp下，生成包结构为
+com.zlf的java源文件的命令为：
+wsimport -s F:\temp -p com.zlf http://localhost:6666/service/interpret?wsdl
+ 
+2.在指定的目录生成指定包结构的 [jar文件]
+假设wsdl文档的uri为http://localhost:6666/service/interpret?wsdl，那么在F:\temp下，生成包结构为
+cn.ljl.sand.jws.chapter3.client.wsimport的interpret-wsimport.jar的命令为：
+ wsimport -d F:\temp -clientjar interpret-wsimport.jar -p cn.ljl.sand.jws.chapter3.client.wsimport http://localhost:6666/service/interpret?wsdl
+ 
+ 
+ 
+ 
+ 
+ 
+ 

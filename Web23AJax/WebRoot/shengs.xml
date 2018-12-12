@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shengs>
+   <北京>
+      <city>朝阳区</city>
+       <city>海淀区</city>
+        <city>昌平区</city>
+   </北京>
+   <河北>
+       <city>石家庄</city>
+        <city>唐山</city>
+         <city>张家口</city>
+   </河北>
+   <山西>
+       <city>太原</city>
+        <city>大同</city>
+         <city>运城</city>
+   </山西>
+   <山东>
+      <city>济南</city>
+      <city>青岛</city>
+      <city>菏泽</city>
+   </山东>
+</shengs>

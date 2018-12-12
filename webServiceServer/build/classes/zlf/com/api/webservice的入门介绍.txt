@@ -1,0 +1,89 @@
+学习地址：http://blog.sina.com.cn/s/blog_a00f56270102w2e2.html
+
+@1.webservice的作用：
+1， WebService是两个系统的远程调用，使两个系统进行数据交互，如应用：天气预报服务、银行ATM取款、使用邮箱账号登录各网站等。
+2， WebService之间的调用是跨语言的调用。Java、.Net、php，发送Http请求，使用的数据格式是XML格式。
+3， webxml.com.cn上面有一些免费的WebService服务，可以进去看看。
+
+@2.WebService的应用基础
+顾名思义就是基于Web的服务。它使用Web(HTTP)方式，接收和响应外部系统的某种请求。从而实现远程调用.
+我们可以调用互联网上查询天气信息Web服务，然后将它嵌入到我们的程序(C/S或B/S程序)当中来，当用户从我们的网点看到天气信息时，他会认为我们为他提供了很多的信息服务，但其实我们什么也没有做，只是简单调用了一下服务器上的一段代码而已。
+
+@3.基础概念
+1.XML
+	XML Extensible Markup Language －扩展性标记语言
+	XML，用于传输格式化的数据，是Web服务的基础。
+	namespace-命名空间。
+2.WSDL
+	WSDL – WebService Description Language – Web服务描述语言。
+	通过XML形式说明服务在什么地方－地址。address location
+	通过XML形式说明服务提供什么样的方法 – 如何调用。operation
+3.SOAP
+	SOAP-Simple Object Access Protocol(简单对象访问协议)
+	SOAP作为一个基于XML语言的协议用于网上传输数据。
+	SOAP = 在HTTP的基础上+XML数据。
+	SOAP是基于HTTP的。
+4.SOAP的组成
+	Envelope – 必须的部分。以XML的根元素出现。
+	Headers – 可选的。
+	Body – 必须的。在body部分，包含要执行的服务器的方法。和发送到服务器的数据。
+	传递的数据格式：
+		<方法名>
+		             方法参数
+		</方法名>
+5.请求实例如文件夹中的     请求实例.png,响应实例为  响应实例.png
+ 以下发出HTTP请求，但不同的是向服务器发送的是XML数据！
+说明：（1），因为是在HTTP上发数据，所以必须先遵循HTTP协议
+          （2），XML部分即SOAP协议，必须包含Envelope和Body元素。
+ 
+ 
+6.应用说明
+WebService通过HTTP协议完成远程调用-----
+(1)WebService只采用HTTP POST方式传输数据，不使用GET方式;（基于soap协议，传输数据格式是XML） 
+普通http post的contentType为application/x-www-form-urlencoded。
+WebService的contentType为（在Http的基础上发SOAP协议）text/xml 这是基于soap1.1协议。application/soap+xml 这是基于soap1.2协议。
+
+(2)WebService从数据传输格式上作了限定。WebService所使用的数据均是基于XML格式的。目前标准的WebService在数据格式上主要采用SOAP协议。SOAP协议实际上就是一种基于XML编码规范的文本协议。
+ 
+(3)SOAP – Simple Object Access protocol 简单对像访问协议。是运行在HTTP协议基础之上的协议。其实就是在HTTP协议是传输XML文件，就变成了SOAP协议。
+ 
+SOAP的数据格式：
+<?xml version="1.0"?>
+<soap:Envelope
+　xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+　soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+ 
+<soap:Header>
+<!--百度百科示例-->
+</soap:Header>
+ 
+<soap:Body>
+<!--百度百科示例-->
+<soap:Fault>
+<!--百度百科示例-->
+</soap:Fault>
+</soap:Body>
+</soap:Envelope>
+
+其构建模块
+一条 SOAP 消息就是一个普通的 XML 文档，包含下列元素：
+必需的 Envelope 元素，可把此 XML 文档标识为一条 SOAP 消息
+可选的 Header 元素，包含头部信息
+必需的 Body 元素，包含所有的调用和响应信息
+可选的 Fault 元素，提供有关在处理此消息所发生错误的信息
+这里是一些重要的语法规则：
+SOAP 消息必须用 XML 来编码
+SOAP 消息必须使用 SOAP Envelope 命名空间
+SOAP 消息必须使用 SOAP Encoding 命名空间
+SOAP 消息不能包含 DTD 引用
+SOAP 消息不能包含 XML 处理指令
+
+(4)SOAP1.1和SOAP1.2的 namespace不一样。可以通过查看类javax.xml.ws.soap.SOAPBinding来查看里面的常量
+
+默认情况下，Jdk1.6只支持soap1.1 即：@BindingType(value=javax.xml.ws.soap.SOAPBinding.SOAP11HTTP_BINDING) 
+ 
+ 
+
+ 
+
+
